@@ -1,5 +1,5 @@
 public class Stack {
-    class Entry {
+    private static class Entry {
         String value;
         Entry next;
 
@@ -16,7 +16,12 @@ public class Stack {
         head.next = head;
     }
 
-    void push(String s) {
+    private void checkValidity() {
+        if (size == 0)
+            throw new java.util.NoSuchElementException();
+    }
+
+    public void push(String s) {
         Entry newEntry = new Entry(s, head);
         head = newEntry;
         size++;
@@ -35,11 +40,6 @@ public class Stack {
         head = popped.next;
         size--;
         return popped.value;
-    }
-
-    private void checkValidity() {
-        if (size == 0)
-            throw new java.util.NoSuchElementException();
     }
 
     public String toString() {
