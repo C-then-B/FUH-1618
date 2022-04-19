@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class Stack {
     private static class Entry {
         String value;
@@ -16,9 +18,9 @@ public class Stack {
         head.next = head;
     }
 
-    private void checkValidity() {
+    private void checkValidity() throws NoSuchElementException {
         if (size == 0)
-            throw new java.util.NoSuchElementException();
+            throw new NoSuchElementException();
     }
 
     public void push(String s) {
@@ -27,13 +29,13 @@ public class Stack {
         size++;
     }
 
-    public String peek() {
+    public String peek() throws NoSuchElementException {
         checkValidity();
 
         return head.value;
     }
 
-    public String pop() {
+    public String pop() throws NoSuchElementException {
         checkValidity();
 
         Entry popped = head;

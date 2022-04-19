@@ -1,14 +1,16 @@
+import java.util.NoSuchElementException;
+
 public class StackTest {
     public static void main(String[] args) {
         Stack stack = new Stack();
         try {
             stack.peek();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.out.println("obj.peek() exception caught: " + e);
         }
         try {
             stack.pop();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.out.println("obj.pop() exception caught: " + e);
         }
         System.out.println();
@@ -27,17 +29,17 @@ public class StackTest {
             System.out.println();
         }
 
-        System.out.println("Der Stack sollte leer sein: " + new Stack().toString().equals("[]"));
+        System.out.println("Der Stack sollte leer sein: " + stack.toString().equals(new Stack().toString()));
 
         // null tests again for good measure
         try {
             stack.peek();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.out.println("obj.peek() exception caught: " + e);
         }
         try {
             stack.pop();
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             System.out.println("obj.pop() exception caught: " + e);
         }
     }
