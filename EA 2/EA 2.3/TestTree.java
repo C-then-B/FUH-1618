@@ -1,5 +1,12 @@
 public class TestTree {
     public static void main(String[] args) {
+        BinaryTree a = new BinaryTree();
+        a.insert(5);
+        System.out.println(a.contains(5) == true);
+        a.insert(6);
+        System.out.println(a.contains(1) == false);
+        System.out.println(a.contains(6) == true);
+
         BinaryTree myTree = new BinaryTree(6);
         myTree.insert(5);
         myTree.insert(4);

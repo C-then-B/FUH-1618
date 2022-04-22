@@ -4,7 +4,7 @@ public class BinaryTree {
     private BinaryNode root;
 
     public BinaryTree(int value) {
-        root = new BinaryNode(value);
+        insert(value);
     }
 
     public BinaryTree() {
@@ -27,21 +27,25 @@ public class BinaryTree {
     }
 
     public void insert(int value) {
-        BinaryNode curr = root;
-        while (true) {
-            if (value > curr.value) {
-                if (curr.rightSon != null)
-                    curr = curr.rightSon;
-                else {
-                    curr.rightSon = new BinaryNode(value);
-                    break;
-                }
-            } else if (value < curr.value) {
-                if (curr.leftSon != null)
-                    curr = curr.leftSon;
-                else {
-                    curr.leftSon = new BinaryNode(value);
-                    break;
+        if (root == null)
+            root = new BinaryNode(value);
+        else {
+            BinaryNode curr = root;
+            while (true) {
+                if (value > curr.value) {
+                    if (curr.rightSon != null)
+                        curr = curr.rightSon;
+                    else {
+                        curr.rightSon = new BinaryNode(value);
+                        break;
+                    }
+                } else if (value < curr.value) {
+                    if (curr.leftSon != null)
+                        curr = curr.leftSon;
+                    else {
+                        curr.leftSon = new BinaryNode(value);
+                        break;
+                    }
                 }
             }
         }
