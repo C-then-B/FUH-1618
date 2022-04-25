@@ -1,6 +1,8 @@
 public class TestTree {
     public static void main(String[] args) {
         BinaryTree a = new BinaryTree();
+        a.inorder();
+        a.contains(5);
         a.insert(5);
         System.out.println(a.contains(5) == true);
         a.insert(6);

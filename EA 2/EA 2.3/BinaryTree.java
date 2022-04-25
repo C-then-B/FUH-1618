@@ -11,66 +11,107 @@ public class BinaryTree {
     }
 
     public boolean contains(int value) {
-        BinaryNode curr = root;
-        while (curr != null) {
-            if (value > curr.value) {
-                curr = curr.rightSon;
-            } else if (value < curr.value) {
-                curr = curr.leftSon;
-            } else
-                return true;
-        }
-        return false;
+        if (root == null)
+            return false;
 
         // Rekursive Lösung
-        //return root.contains(value);
+        else
+            return root.contains(value);
+
+        // Iterative Lösung
+        // else {
+        //     BinaryNode curr = root;
+        //     while (curr != null) {
+        //         if (value > curr.value) {
+        //             curr = curr.rightSon;
+        //         } else if (value < curr.value) {
+        //             curr = curr.leftSon;
+        //         } else
+        //             return true;
+        //     }
+        //     return false;
+        // }
     }
 
     public void insert(int value) {
         if (root == null)
             root = new BinaryNode(value);
-        else {
-            BinaryNode curr = root;
-            while (true) {
-                if (value > curr.value) {
-                    if (curr.rightSon != null)
-                        curr = curr.rightSon;
-                    else {
-                        curr.rightSon = new BinaryNode(value);
-                        break;
-                    }
-                } else if (value < curr.value) {
-                    if (curr.leftSon != null)
-                        curr = curr.leftSon;
-                    else {
-                        curr.leftSon = new BinaryNode(value);
-                        break;
-                    }
+
+        // Rekursive Lösung
+        else
+            root.insert(value);
+
+        // Iterative Lösung
+        // else {
+        //     BinaryNode curr = root;
+        //     while (true) {
+        //         if (value > curr.value) {
+        //             if (curr.rightSon != null)
+        //                 curr = curr.rightSon;
+        //             else {
+        //                 curr.rightSon = new BinaryNode(value);
+        //                 break;
+        //             }
+        //         } else if (value < curr.value) {
+        //             if (curr.leftSon != null)
+        //                 curr = curr.leftSon;
+        //             else {
+        //                 curr.leftSon = new BinaryNode(value);
+        //                 break;
+        //             }
+        //         }
+        //     }
+        // }
+    }
+
+    public void inorder() {
+        // Variante 1: iterativ; kein stack
+        BinaryNode curr, pre;
+        curr = root;
+
+        while (curr != null) {
+            if (curr.leftSon == null) {
+                System.out.println(curr.value);
+                curr = curr.rightSon;
+            } else {
+                pre = curr.leftSon;
+                while (pre.rightSon != null && pre.rightSon != curr)
+                    pre = pre.rightSon;
+
+                if (pre.rightSon == null) {
+                    pre.rightSon = curr;
+                    curr = curr.leftSon;
+                }
+
+                else {
+                    pre.rightSon = null;
+                    System.out.println(curr.value);
+                    curr = curr.rightSon;
                 }
             }
         }
 
-        // Rekursive Lösung
-        //root.insert(value);
-    }
+        System.out.println("-----");
 
-    public void inorder() {
-        Stack<BinaryNode> todo = new Stack<BinaryNode>();
-        BinaryNode curr = root;
-        while (true) {
-            if (curr != null) {
-                todo.push(curr);
-                curr = curr.leftSon;
-            } else if (!todo.isEmpty()) {
-                curr = todo.pop();
-                System.out.println(curr.value);
-                curr = curr.rightSon;
-            } else
-                break;
+        // Variante 2: iterativ; /w stack
+        Stack<BinaryNode> path = new Stack<BinaryNode>();
+        BinaryNode curr2 = root;
+        while (curr2 != null || !path.isEmpty()) {
+            if (curr2 != null) {
+                path.push(curr2);
+                curr2 = curr2.leftSon;
+            } else {
+                curr2 = path.pop();
+                System.out.println(curr2.value);
+                curr2 = curr2.rightSon;
+            }
         }
 
-        // Rekursive Lösung
-        //root.inorder();
+        System.out.println("-----");
+
+        // Variante 3: rekursiv
+        if (root != null)
+            root.inorder();
     }
 
     private static class BinaryNode {
@@ -82,9 +123,6 @@ public class BinaryTree {
             this.value = value;
         }
 
-        /* 
-            Rekursive Lösungen (oben auskommentieren!)
-        */
         boolean contains(int value) {
             if (value == this.value)
                 return true;
