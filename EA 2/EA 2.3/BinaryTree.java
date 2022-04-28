@@ -44,7 +44,7 @@ public class BinaryTree {
         // Iterative Lösung
         // else {
         //     BinaryNode curr = root;
-        //     while (true) {
+        //     while (curr.value != value) {
         //         if (value > curr.value) {
         //             if (curr.rightSon != null)
         //                 curr = curr.rightSon;
@@ -91,27 +91,23 @@ public class BinaryTree {
             }
         }
 
-        System.out.println("-----");
+        // // Variante 2: iterativ; /w stack
+        // Stack<BinaryNode> path = new Stack<BinaryNode>();
+        // BinaryNode curr2 = root;
+        // while (curr2 != null || !path.isEmpty()) {
+        //     if (curr2 != null) {
+        //         path.push(curr2);
+        //         curr2 = curr2.leftSon;
+        //     } else {
+        //         curr2 = path.pop();
+        //         System.out.println(curr2.value);
+        //         curr2 = curr2.rightSon;
+        //     }
+        // }
 
-        // Variante 2: iterativ; /w stack
-        Stack<BinaryNode> path = new Stack<BinaryNode>();
-        BinaryNode curr2 = root;
-        while (curr2 != null || !path.isEmpty()) {
-            if (curr2 != null) {
-                path.push(curr2);
-                curr2 = curr2.leftSon;
-            } else {
-                curr2 = path.pop();
-                System.out.println(curr2.value);
-                curr2 = curr2.rightSon;
-            }
-        }
-
-        System.out.println("-----");
-
-        // Variante 3: rekursiv
-        if (root != null)
-            root.inorder();
+        // // Variante 3: rekursiv
+        // if (root != null)
+        //     root.inorder();
     }
 
     private static class BinaryNode {
