@@ -2,7 +2,7 @@ public class TestTree {
     public static void main(String[] args) {
         BinaryTree a = new BinaryTree();
         a.inorder();
-        a.contains(5);
+        System.out.println(a.contains(5) == false);
         a.insert(5);
         System.out.println(a.contains(5) == true);
         a.insert(6);
@@ -19,6 +19,6 @@ public class TestTree {
 
         System.out.println(myTree.contains(10));
         System.out.println(myTree.contains(11));
-        System.out.println(myTree.contains(13));
+        System.out.println(myTree.contains(13) == false);
     }
 }

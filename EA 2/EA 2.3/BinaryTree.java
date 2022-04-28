@@ -1,5 +1,3 @@
-import java.util.Stack;
-
 public class BinaryTree {
     private BinaryNode root;
 
@@ -65,10 +63,13 @@ public class BinaryTree {
     }
 
     public void inorder() {
-        // Variante 1: iterativ; kein stack
+        // Variante 1: rekursiv
+        if (root != null)
+            root.inorder();
+
+        // Variante 2: iterativ; kein stack
         BinaryNode curr, pre;
         curr = root;
-
         while (curr != null) {
             if (curr.leftSon == null) {
                 System.out.println(curr.value);
@@ -91,23 +92,19 @@ public class BinaryTree {
             }
         }
 
-        // // Variante 2: iterativ; /w stack
-        // Stack<BinaryNode> path = new Stack<BinaryNode>();
-        // BinaryNode curr2 = root;
-        // while (curr2 != null || !path.isEmpty()) {
-        //     if (curr2 != null) {
-        //         path.push(curr2);
-        //         curr2 = curr2.leftSon;
-        //     } else {
-        //         curr2 = path.pop();
-        //         System.out.println(curr2.value);
-        //         curr2 = curr2.rightSon;
-        //     }
-        // }
-
-        // // Variante 3: rekursiv
-        // if (root != null)
-        //     root.inorder();
+        // Variante 3: iterativ; /w stack
+        java.util.Stack<BinaryNode> path = new java.util.Stack<BinaryNode>();
+        curr = root; // Reset if 3 runs ontop 2
+        while (curr != null || !path.isEmpty()) {
+            if (curr != null) {
+                path.push(curr);
+                curr = curr.leftSon;
+            } else {
+                curr = path.pop();
+                System.out.println(curr.value);
+                curr = curr.rightSon;
+            }
+        }
     }
 
     private static class BinaryNode {
