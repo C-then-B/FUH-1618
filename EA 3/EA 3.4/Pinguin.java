@@ -5,7 +5,7 @@ class Pinguin extends Tier {
     }
 
     @Override
-    DangerLvl isDangerous() {
+    DangerLvl dangerLvl() {
         return DangerLvl.MEDIUM;
     }
 }

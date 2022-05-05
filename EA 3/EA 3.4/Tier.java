@@ -18,10 +18,10 @@ abstract class Tier {
 
     abstract int legCnt();
 
-    abstract DangerLvl isDangerous();
+    abstract DangerLvl dangerLvl();
 
     public void druckeEigenschaften() {
         System.out.println(legCnt() + " Beine");
-        System.out.println("Gefährlich für Menschen: " + isDangerous());
+        System.out.println("Gefährlich für Menschen: " + dangerLvl());
     }
 }

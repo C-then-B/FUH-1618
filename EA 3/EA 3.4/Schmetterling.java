@@ -5,7 +5,7 @@ class Schmetterling extends Tier {
     }
 
     @Override
-    DangerLvl isDangerous() {
+    DangerLvl dangerLvl() {
         return DangerLvl.LOW;
     }
 }

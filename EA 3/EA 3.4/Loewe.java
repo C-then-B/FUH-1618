@@ -5,7 +5,7 @@ class Loewe extends Tier {
     }
 
     @Override
-    DangerLvl isDangerous() {
+    DangerLvl dangerLvl() {
         return DangerLvl.HIGH;
     }
 }
