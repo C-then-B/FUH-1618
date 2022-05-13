@@ -1,12 +1,12 @@
 public class ArrayAddressBook {
-    Person[] persons;
-    int cnt;
+    private Person[] persons;
+    private int cnt;
 
     ArrayAddressBook(int pSize) {
         persons = new Person[pSize > 0 ? pSize : 1];
     }
 
-    void addPerson(Person p) {
+    public void addPerson(Person p) {
         if (persons.length == cnt)
             growArray();
 
